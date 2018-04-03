@@ -10,6 +10,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private String fname;
 	private String lname;
 	public Long getId() {
@@ -36,6 +37,7 @@ public class User {
 	}
 	public User() {
 	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + "]";

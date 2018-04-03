@@ -24,22 +24,22 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 	@GetMapping("/users")
 	public List<User> getUsers(){
 		return userRepository.findAll();
 	}
 	
-	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id){
 		return userRepository.findOne(id);
+//		return userRepository.findById(id).isPresent()? userRepository.findById(id).get() : null;
 	}
 	
-	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
+
 	@DeleteMapping("/user/{id}")
 	public boolean deleteUser(@PathVariable Long id) {
 		userRepository.delete(id);
+//		userRepository.deleteById(id);
 		return true;
 	}
 	
@@ -47,14 +47,12 @@ public class UserController {
 //	@ResponseBody
 	
 //	@PostMapping("/user")
-	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 	@PostMapping(path = "/user", consumes = "application/json", produces = "application/json")
 	public User createUser(@RequestBody User user){
 		return userRepository.save(user);
 	}
 	
 //	@PutMapping("/user")
-	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 	@PutMapping(path = "/user", consumes = "application/json", produces = "application/json")
 	public User updateUser(@RequestBody User user){
 		return userRepository.save(user);
